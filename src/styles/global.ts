@@ -1,9 +1,9 @@
 import { createGlobalStyle } from 'styled-components'
-import { baseColors } from './consts'
+
 export default createGlobalStyle`
    @font-face {
     font-family: 'W95FA';
-    src: local('W95FA'), url('../fonts/W95FA.otf') format('opentype');
+    src: local('W95FA'), url('/fonts/W95FA.otf') format('opentype');
     font-style: normal;
     font-weight: normal;
   }
@@ -11,10 +11,12 @@ export default createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
-    font-family: 'W95FA';
+    font-family: 'W95FA', monospace;
   }
 
   body{
+    min-width:1440px;
+    overflow:hidden;
     height: 100%;
 
   }

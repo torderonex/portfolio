@@ -15,6 +15,7 @@ const Name = styled.p`
     font-size: 100%;
     margin-top: -25px;
     text-align: center;
+    word-wrap: break-word;
 `
 
 

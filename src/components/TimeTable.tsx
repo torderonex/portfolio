@@ -5,7 +5,11 @@ const Div = styled.div`
     margin-right:5px;
     padding: 1px;
     background-color: ${baseColors.taskBarColor};
-    border: 1px solid black;
+    border-bottom: 2px solid white;
+    border-right: 2px solid white;
+    border-top:2px solid ${baseColors.darkGray};
+    border-left:2px solid ${baseColors.darkGray};
+
 `
 
 function TimeTable(){

@@ -19,8 +19,6 @@ function Desktop(){
             <DesktopApp/>
             <DesktopApp/>
             <DesktopApp/>
-            <DesktopApp/>   
-            <DesktopApp/>   
         </Main>
     );
 }
