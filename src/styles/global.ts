@@ -1,15 +1,21 @@
 import { createGlobalStyle } from 'styled-components'
-import { baseColors } from '@/styles/consts'
+import { baseColors } from './consts'
 export default createGlobalStyle`
+   @font-face {
+    font-family: 'W95FA';
+    src: local('W95FA'), url('../fonts/W95FA.otf') format('opentype');
+    font-style: normal;
+    font-weight: normal;
+  }
+
   * {
     margin: 0;
     padding: 0;
+    font-family: 'W95FA';
+  }
+
+  body{
     height: 100%;
-    background-color: ${baseColors.wallpaperColor};
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-`
+
+  }
+`;

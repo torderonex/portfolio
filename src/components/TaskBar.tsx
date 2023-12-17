@@ -1,14 +1,17 @@
 import styled from "styled-components";
-import { baseColors } from "@/styles/consts";
+import { baseColors } from "../styles/consts";
 import TimeTable from "./TimeTable";
+
 const Footer = styled.footer`
     width: 100%;
     background-color: ${baseColors.taskBarColor};
     position: absolute;
     bottom : 0;
-    height: 3.5%;
+    height: 5vh;
     align-items: center;
     display: flex;
+    justify-content: space-between;
+    border-top:1px solid black;
 `;
 
 const Img = styled.img`
