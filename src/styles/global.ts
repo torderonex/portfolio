@@ -16,7 +16,7 @@ export default createGlobalStyle`
 
   body{
     min-width:1440px;
-    overflow:hidden;
+    overflow:hidden;  
     height: 100%;
 
   }

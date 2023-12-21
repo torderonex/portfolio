@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { baseColors } from "../styles/consts";
 import DesktopApp from "./DesktopApp";
+import AppContainer from "./app/AppContainer";
 
 const Main = styled.main`
     background-color: ${baseColors.wallpaperColor};
@@ -10,6 +11,7 @@ const Main = styled.main`
     grid-template-rows: repeat(5, 1fr); 
     grid-auto-flow: column;
     gap:0;
+    
 `
 
 function Desktop(){
@@ -17,6 +19,7 @@ function Desktop(){
     return(
         <Main>
             <DesktopApp/>
+            <AppContainer/>
             <DesktopApp/>
             <DesktopApp/>
         </Main>

@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { baseColors } from "../../styles/consts";
 import StartMenuBtn from "./StartMenuBtn";
-const Div = styled.div`
+import { Shadow } from "../../styles/shadow";
+const Div = styled(Shadow)`
     position: absolute;
     z-index: 123;
     bottom:5vh;

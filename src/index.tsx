@@ -1,14 +1,28 @@
-import React from 'react';
+import React,{createContext} from 'react';
 import ReactDOM from 'react-dom/client';
-import './fonts/W95FA.otf'
 import App from './App';
+import Store from './store/store';
+
+interface IStore{
+  store : Store
+}
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+const store = new Store();
+
+export const Context = createContext<IStore>({
+  store
+})
+
+
 root.render(
   <React.StrictMode>
-    <App />
+    <Context.Provider value={{store }}>
+      <App />
+    </Context.Provider>
   </React.StrictMode>
 );
 
