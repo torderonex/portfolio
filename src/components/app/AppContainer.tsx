@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { baseColors } from '../../styles/consts';
 import { Shadow } from '../../styles/shadow';
 import React from 'react';
+import HelpButton from './HelpButton';
 
 const Div = styled(Shadow)`
     position: absolute;
@@ -30,26 +31,9 @@ const HelpBtns = styled.div`
     display:flex;
     gap:2px;
 `
-
-const HelpBtn = styled(Shadow)`
-    color: black;
-    cursor: pointer;
-    width:16px;
-    height: 16px;
-    background-color: ${baseColors.taskBarColor};
-    display:flex;
-    align-items:center;
-`
-
 const Ico = styled.img`
        
 `;
-
-const HelpIco = styled.img`
-    height:16px;
-    width:16px;
-    image-rendering:auto;
-`
 
 function AppContainer(props: any,ref : any ){
     return(
@@ -60,16 +44,10 @@ function AppContainer(props: any,ref : any ){
                     Text.txt - Notepad
                 </span>
                 <HelpBtns>
-                    <HelpBtn>
-                        <HelpIco src="/img/first.png"/>
-                    </HelpBtn>
-                    <HelpBtn>
-                        <HelpIco src="/img/second.png"/>
+                    <HelpButton src="/img/first.png"/>
+                    <HelpButton src="/img/second.png"/>
+                    <HelpButton src="/img/third.png"/>
 
-                    </HelpBtn>
-                    <HelpBtn>
-                        <HelpIco src="/img/third.png"/>
-                    </HelpBtn>
                 </HelpBtns>
         
                 

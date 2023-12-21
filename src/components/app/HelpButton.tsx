@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { baseColors } from '../../styles/consts';
 import { Shadow } from '../../styles/shadow';
 import React from 'react';
+import { useShadow } from '../../hooks/useShadow';
 
 
 const HelpIco = styled.img`
@@ -20,11 +21,16 @@ const HelpBtn = styled(Shadow)`
     align-items:center;
 `
 
-function HelpButton(props: any){
+interface props {
+    src : string
+}
+
+function HelpButton({src} : props){
     const ref = React.useRef(null);
+    useShadow(ref);
     return(
         <HelpBtn ref={ref}>
-            <HelpIco src="/img/third.png"/>
+            <HelpIco src={src}/>
         </HelpBtn>
     );
 }
