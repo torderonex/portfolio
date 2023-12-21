@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { baseColors } from '../../styles/consts';
 import { Shadow } from '../../styles/shadow';
+import React from 'react';
 
 const Div = styled(Shadow)`
     position: absolute;
@@ -9,7 +10,7 @@ const Div = styled(Shadow)`
     left: 100px;
     top: 100px;
     background-color: ${baseColors.taskBarColor};   
-    padding:3px;
+    user-select:none;
 `
 
 const Header = styled.div`
@@ -22,7 +23,7 @@ const Header = styled.div`
     font-size:15px;
     height:20px;
     cursor: grab;
-    background-color:${baseColors.darkGray};
+    background-color:${baseColors.windowsBlue};
 `
 
 const HelpBtns = styled.div`
@@ -41,28 +42,33 @@ const HelpBtn = styled(Shadow)`
 `
 
 const Ico = styled.img`
-    width:16px;
+       
+`;
+
+const HelpIco = styled.img`
     height:16px;
+    width:16px;
+    image-rendering:auto;
 `
 
-function AppContainer(){
+function AppContainer(props: any,ref : any ){
     return(
-        <Div>
+        <Div {...props} ref={ref}>
             <Header>
+                <Ico src='/img/text.png' style={{height:"100%"}}/>
                 <span style={{marginLeft:'5px'}}>
-                    <Ico src='/img/text.png' style={{height:"100%"}}/>
                     Text.txt - Notepad
                 </span>
                 <HelpBtns>
                     <HelpBtn>
-                        <Ico src="/img/first.png"/>
+                        <HelpIco src="/img/first.png"/>
                     </HelpBtn>
                     <HelpBtn>
-                        <Ico src="/img/second.png"/>
+                        <HelpIco src="/img/second.png"/>
 
                     </HelpBtn>
                     <HelpBtn>
-                        <Ico src="/img/third.png"/>
+                        <HelpIco src="/img/third.png"/>
                     </HelpBtn>
                 </HelpBtns>
         
@@ -73,4 +79,4 @@ function AppContainer(){
     );
 }
 
-export default AppContainer;
+export default React.forwardRef(AppContainer);

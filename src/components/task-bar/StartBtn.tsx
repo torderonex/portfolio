@@ -12,8 +12,10 @@ const Div = styled(Shadow)<{$active : boolean}>`
         border-bottom:2px solid white;
         border-right:2px solid white;`
         )
-}
+    }
     padding-right:3px;
+    user-select:none;
+    cursor:pointer;
 `
 
 const Ico = styled.img`

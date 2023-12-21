@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { baseColors } from "../styles/consts";
 import DesktopApp from "./DesktopApp";
 import AppContainer from "./app/AppContainer";
+import React, { useRef, useEffect } from "react";
+import { useDragAndDrop } from "../hooks/useDragAndDrop";
 
 const Main = styled.main`
     background-color: ${baseColors.wallpaperColor};
@@ -13,13 +15,13 @@ const Main = styled.main`
     gap:0;
     
 `
-
 function Desktop(){
-    
+    const ref = useRef(null);
+    useDragAndDrop(ref,ref)
     return(
         <Main>
             <DesktopApp/>
-            <AppContainer/>
+                <AppContainer ref={ref}/>
             <DesktopApp/>
             <DesktopApp/>
         </Main>

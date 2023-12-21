@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 const Div = styled.div`
-    width: 17vh;
-    height:10vh;
+    width: 10vh;
+    margin-top:10px;
     cursor: pointer;
 `
 const Ico = styled.img`
@@ -13,7 +13,6 @@ const Ico = styled.img`
 `
 const Name = styled.p`
     font-size: 100%;
-    margin-top: -25px;
     text-align: center;
     word-wrap: break-word;
 `
