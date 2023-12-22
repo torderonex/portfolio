@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import { App } from "../types/App";
+import { useContext } from "react";
+import { Context } from "..";
 
 const Div = styled.div`
     width: 10vh;
@@ -17,12 +20,20 @@ const Name = styled.p`
     word-wrap: break-word;
 `
 
+interface props{
+    app : App
+}
 
-function DesktopApp(){
+function DesktopApp({app} : props){
+    const {store} = useContext(Context);
+    function openHandler(){
+        store.openApp(app);
+    }
+    
     return(
-        <Div>
-            <Ico src='/img/text.png'/>
-            <Name>Text.txt</Name>
+        <Div onClick={openHandler}>
+            <Ico src={app.ico}/>
+            <Name>{app.name}</Name>
         </Div>
     );
 }

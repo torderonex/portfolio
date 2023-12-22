@@ -22,14 +22,14 @@ const HelpBtn = styled(Shadow)`
 `
 
 interface props {
-    src : string
+    src : string;
+    onClick? : () => void;
 }
-
-function HelpButton({src} : props){
+function HelpButton({src, onClick} : props){
     const ref = React.useRef(null);
     useShadow(ref);
     return(
-        <HelpBtn ref={ref}>
+        <HelpBtn onClick={onClick} ref={ref}>
             <HelpIco src={src}/>
         </HelpBtn>
     );

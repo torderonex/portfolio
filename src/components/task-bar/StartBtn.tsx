@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Context } from '../..';
 import { useOutsideClick } from '../../hooks/useOutsideClick';
 import { Shadow } from '../../styles/shadow';
+
 const Div = styled(Shadow)<{$active : boolean}>`
     display:flex;
     align-items:center;

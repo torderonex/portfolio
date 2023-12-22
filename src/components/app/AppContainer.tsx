@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 import { baseColors } from '../../styles/consts';
 import { Shadow } from '../../styles/shadow';
-import React from 'react';
+import React, { useContext, useRef } from 'react';
 import HelpButton from './HelpButton';
-
+import { App } from '../../types/App';
+import { Context } from '../..';
+import { useDragAndDrop } from '../../hooks/useDragAndDrop';
 const Div = styled(Shadow)`
     position: absolute;
     width:500px;
@@ -35,26 +37,33 @@ const Ico = styled.img`
        
 `;
 
-function AppContainer(props: any,ref : any ){
+interface props{
+    app : App;
+}
+
+function AppContainer(props: props ){
+    const {store} = useContext(Context);
+    const ref = useRef(null);
+
+    useDragAndDrop(ref,ref)
+    function closeHandler(){
+        store.closeApp(props.app.name);
+    }
     return(
         <Div {...props} ref={ref}>
             <Header>
-                <Ico src='/img/text.png' style={{height:"100%"}}/>
+                <Ico src={props.app.ico} style={{height:"100%"}}/>
                 <span style={{marginLeft:'5px'}}>
-                    Text.txt - Notepad
+                    {props.app.name}
                 </span>
                 <HelpBtns>
                     <HelpButton src="/img/first.png"/>
                     <HelpButton src="/img/second.png"/>
-                    <HelpButton src="/img/third.png"/>
-
+                    <HelpButton onClick={closeHandler} src="/img/third.png"/>
                 </HelpBtns>
-        
-                
             </Header>
-           
         </Div>
     );
 }
 
-export default React.forwardRef(AppContainer);
+export default AppContainer;
