@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { baseColors } from '../../styles/consts';
 import { Shadow } from '../../styles/shadow';
-import React, { PropsWithChildren, ReactElement, useContext, useRef } from 'react';
+import React, { HtmlHTMLAttributes, PropsWithChildren, ReactElement, useContext, useRef } from 'react';
 import HelpButton from './HelpButton';
 import { App } from '../../types/App';
 import { Context } from '../..';
@@ -56,9 +56,21 @@ interface props extends PropsWithChildren{
 
 function AppContainer(props: props){
     const {store} = useContext(Context);
-    const ref = useRef(null);
+    const programRef = useRef<HTMLDivElement | null>(null);
+    const headerRef = useRef(null);
+    useDragAndDrop(headerRef,programRef)
 
-    useDragAndDrop(ref,ref)
+    function fullscreenHandler() {
+        const { current } = programRef;
+    
+        if (current) {
+            current.style.width = '100%';
+            current.style.height = '96vh';
+            current.style.top = '0';
+            current.style.left = '0';
+        }
+    }
+
     function closeHandler(){
         store.closeApp(props.app.name);
     }
@@ -66,29 +78,28 @@ function AppContainer(props: props){
     const btnNames = ['File', 'Edit', 'Search', 'Help']
 
     return(
-        <Div {...props} ref={ref}>
-            <Header>
+        <Div {...props} ref={programRef}>
+            <Header ref={headerRef}>
                 <Ico src={props.app.ico} style={{height:"100%"}}/>
                 <span style={{marginLeft:'5px'}}>
                     {props.app.name}
                 </span>
                 <HelpBtns>
                     <HelpButton src="/img/first.png"/>
-                    <HelpButton src="/img/second.png"/>
+                    <HelpButton onClick={fullscreenHandler} src="/img/second.png"/>
                     <HelpButton onClick={closeHandler} src="/img/third.png"/>
                 </HelpBtns>
             </Header>
             <HelpPanel>
                 {btnNames.map(e => (
                     <p>
-                    <Span>
-                        {e[0]}
-                    </Span>
-                    {e.substring(1)}
+                        <Span>
+                            {e[0]}
+                        </Span>
+                        {e.substring(1)}
                     </p>
                 ))}
             </HelpPanel>
-
             {
                 props.children
             }
