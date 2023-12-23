@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { baseColors } from '../../styles/consts';
 import { Shadow } from '../../styles/shadow';
-import React, { useContext, useRef } from 'react';
+import React, { PropsWithChildren, ReactElement, useContext, useRef } from 'react';
 import HelpButton from './HelpButton';
 import { App } from '../../types/App';
 import { Context } from '../..';
@@ -37,11 +37,11 @@ const Ico = styled.img`
        
 `;
 
-interface props{
+interface props extends PropsWithChildren{
     app : App;
 }
 
-function AppContainer(props: props ){
+function AppContainer(props: props){
     const {store} = useContext(Context);
     const ref = useRef(null);
 
@@ -62,6 +62,9 @@ function AppContainer(props: props ){
                     <HelpButton onClick={closeHandler} src="/img/third.png"/>
                 </HelpBtns>
             </Header>
+            {
+                props.children
+            }
         </Div>
     );
 }

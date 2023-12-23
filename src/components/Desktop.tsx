@@ -9,7 +9,7 @@ import { observer } from "mobx-react-lite";
 
 const Main = styled.main`
     background-color: ${baseColors.wallpaperColor};
-    height: 95vh;
+    height: 96vh;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(5, 1fr); 
@@ -31,7 +31,9 @@ function Desktop(){
             <DesktopApp app={mock}/>
             {
                 store.getApps().map(e => (
-                    <AppContainer key={Math.random()} app={e}/>
+                    <AppContainer key={Math.random()} app={e}>
+                        {e.program}
+                    </AppContainer>
                 ))
             }
         </Main>

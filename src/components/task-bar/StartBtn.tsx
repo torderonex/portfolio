@@ -14,6 +14,7 @@ const Div = styled(Shadow)<{$active : boolean}>`
         border-right:2px solid white;`
         )
     }
+    height:100%;
     padding-right:3px;
     user-select:none;
     cursor:pointer;
@@ -28,7 +29,7 @@ const Span = styled.span`
     margin-left:5px;
     `
 
-function StartBtn({...rest}){
+function StartBtn(){
     const {store} = useContext(Context);
     const ref = useRef(null);
     

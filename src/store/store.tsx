@@ -6,7 +6,7 @@ export default class Store{
     private apps : App[] = [{
         name:'Text.txt - Notepad',
         ico:'/img/text.png',
-        program : <></>
+        program : <div>hgelll</div>
     }];
 
     constructor(){

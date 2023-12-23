@@ -5,7 +5,7 @@ import { Shadow } from "../../styles/shadow";
 const Div = styled(Shadow)`
     position: absolute;
     z-index: 123;
-    bottom:5vh;
+    bottom: calc(4vh + 4px);
     left:0;
     background-color: ${baseColors.taskBarColor};
     height: 45vh;
