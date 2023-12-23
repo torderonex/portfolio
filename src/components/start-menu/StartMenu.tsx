@@ -72,7 +72,6 @@ function StartMenu() {
             }
             <Line/>
             <StartMenuBtn onClick={() => window.close()} name={"Shutdown"} icon={"img/shutdown.png"} isDropdown=""/>
-
         </BtnsDiv>
     </Div>
     );

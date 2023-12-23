@@ -26,6 +26,7 @@ interface props{
 
 function DesktopApp({app} : props){
     const {store} = useContext(Context);
+    
     function openHandler(){
         store.openApp(app);
     }

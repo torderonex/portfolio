@@ -6,6 +6,7 @@ import React, { useRef, useEffect, useContext } from "react";
 import { useDragAndDrop } from "../hooks/useDragAndDrop";
 import { Context } from "..";
 import { observer } from "mobx-react-lite";
+import TextDocument from "./app/TextDocument";
 
 const Main = styled.main`
     background-color: ${baseColors.wallpaperColor};
@@ -21,7 +22,7 @@ function Desktop(){
     const mock = {
         name:'Text.txt',
         ico:'/img/text.png',
-        program : <></>
+        program : <TextDocument/>
     };
     const {store} = useContext(Context);
     return(

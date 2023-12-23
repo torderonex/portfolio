@@ -3,11 +3,7 @@ import { App } from "../types/App";
 
 export default class Store{
     private isStartMenuOpen = false;
-    private apps : App[] = [{
-        name:'Text.txt - Notepad',
-        ico:'/img/text.png',
-        program : <div>hgelll</div>
-    }];
+    private apps : App[] = [];
 
     constructor(){
         makeAutoObservable(this);

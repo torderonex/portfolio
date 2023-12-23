@@ -12,6 +12,7 @@ const Div = styled(Shadow)`
     height:500px;
     left: 100px;
     top: 100px;
+    padding:2px;
     background-color: ${baseColors.taskBarColor};   
     user-select:none;
 `
@@ -29,6 +30,13 @@ const Header = styled.div`
     background-color:${baseColors.windowsBlue};
 `
 
+const HelpPanel = styled.div`
+    display:flex;
+    gap:15px;
+    margin-top:3px;
+    margin-bottom:3px;
+`
+
 const HelpBtns = styled.div`
     display:flex;
     gap:2px;
@@ -36,6 +44,11 @@ const HelpBtns = styled.div`
 const Ico = styled.img`
        
 `;
+
+const Span = styled.span`
+    text-decoration: underline;
+    text-transform:uppercase;
+`
 
 interface props extends PropsWithChildren{
     app : App;
@@ -49,6 +62,9 @@ function AppContainer(props: props){
     function closeHandler(){
         store.closeApp(props.app.name);
     }
+
+    const btnNames = ['File', 'Edit', 'Search', 'Help']
+
     return(
         <Div {...props} ref={ref}>
             <Header>
@@ -62,6 +78,17 @@ function AppContainer(props: props){
                     <HelpButton onClick={closeHandler} src="/img/third.png"/>
                 </HelpBtns>
             </Header>
+            <HelpPanel>
+                {btnNames.map(e => (
+                    <p>
+                    <Span>
+                        {e[0]}
+                    </Span>
+                    {e.substring(1)}
+                    </p>
+                ))}
+            </HelpPanel>
+
             {
                 props.children
             }
