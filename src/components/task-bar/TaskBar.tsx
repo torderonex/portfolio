@@ -47,7 +47,7 @@ function TaskBar() {
                 <Programs>
                     {
                         store.getApps().map(e => (
-                            <Program>{e.name}</Program>
+                            <Program key={Math.random()}>{e.name}</Program>
                         ))
                     }    
                 </Programs>

@@ -11,7 +11,6 @@ const TextArea = styled.textarea`
 function TextDocument() {
   return (
   <TextArea>
-    some text
   </TextArea>
 
   )

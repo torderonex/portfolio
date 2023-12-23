@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export function useDragAndDrop(draggableRef: React.RefObject<HTMLElement>, targetRef: React.RefObject<HTMLElement>) {
+export function useDragAndDrop(draggableRef: React.RefObject<HTMLElement>, targetRef: React.RefObject<HTMLElement>, handler? : () => void) {
     const [isDragging, setIsDragging] = useState(false);
 
     useEffect(() => {
@@ -24,6 +24,7 @@ export function useDragAndDrop(draggableRef: React.RefObject<HTMLElement>, targe
               const y = event.clientY - offsetY;
               targetElement.style.left = `${x}px`;
               targetElement.style.top = `${y}px`;
+              handler?.();
             }
           };
     

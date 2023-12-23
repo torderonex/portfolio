@@ -1,20 +1,26 @@
 import styled from 'styled-components';
 import { baseColors } from '../../styles/consts';
 import { Shadow } from '../../styles/shadow';
-import React, { HtmlHTMLAttributes, PropsWithChildren, ReactElement, useContext, useRef } from 'react';
+import { PropsWithChildren, useContext, useRef } from 'react';
 import HelpButton from './HelpButton';
 import { App } from '../../types/App';
 import { Context } from '../..';
 import { useDragAndDrop } from '../../hooks/useDragAndDrop';
-const Div = styled(Shadow)`
+const Div = styled(Shadow)<{$left : number, $top: number}>`
     position: absolute;
     width:500px;
     height:500px;
-    left: 100px;
-    top: 100px;
     padding:2px;
     background-color: ${baseColors.taskBarColor};   
     user-select:none;
+    ${
+        props => (
+            `
+                left:${props.$left}px;
+                top:${props.$top}px;
+            `
+        )
+    }
 `
 
 const Header = styled.div`
@@ -58,12 +64,11 @@ function AppContainer(props: props){
     const {store} = useContext(Context);
     const programRef = useRef<HTMLDivElement | null>(null);
     const headerRef = useRef(null);
-    useDragAndDrop(headerRef,programRef)
 
     function fullscreenHandler() {
         const { current } = programRef;
     
-        if (current) {
+        if (current) {  
             current.style.width = '100%';
             current.style.height = '96vh';
             current.style.top = '0';
@@ -72,13 +77,26 @@ function AppContainer(props: props){
     }
 
     function closeHandler(){
-        store.closeApp(props.app.name);
+        if(props.app.process)
+            store.closeApp(props.app.process);
     }
+
+    function dragHandler(){
+        const left = programRef.current?.style.left.replace('px','');
+        if (left){
+            props.app.left =  parseInt(left);
+        }
+        const top = programRef.current?.style.top.replace('px','');
+        if (top){
+            props.app.top =  parseInt(top);
+        }
+    }
+    useDragAndDrop(headerRef,programRef, dragHandler)
 
     const btnNames = ['File', 'Edit', 'Search', 'Help']
 
     return(
-        <Div {...props} ref={programRef}>
+        <Div {...props} ref={programRef} $left={props.app.left} $top={props.app.top}>
             <Header ref={headerRef}>
                 <Ico src={props.app.ico} style={{height:"100%"}}/>
                 <span style={{marginLeft:'5px'}}>
@@ -92,7 +110,7 @@ function AppContainer(props: props){
             </Header>
             <HelpPanel>
                 {btnNames.map(e => (
-                    <p>
+                    <p key={Math.random()}>
                         <Span>
                             {e[0]}
                         </Span>

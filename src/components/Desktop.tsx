@@ -7,6 +7,7 @@ import { useDragAndDrop } from "../hooks/useDragAndDrop";
 import { Context } from "..";
 import { observer } from "mobx-react-lite";
 import TextDocument from "./app/TextDocument";
+import { App } from "../types/App";
 
 const Main = styled.main`
     background-color: ${baseColors.wallpaperColor};
@@ -19,12 +20,18 @@ const Main = styled.main`
     
 `
 function Desktop(){
-    const mock = {
+    const mock : App = {
         name:'Text.txt',
         ico:'/img/text.png',
-        program : <TextDocument/>
+        program : <TextDocument/>,
+        zIndex : 0,
+        process : null,
+        left: 120,
+        top: 120,
+
     };
     const {store} = useContext(Context);
+    
     return(
         <Main>
             <DesktopApp app={mock}/>

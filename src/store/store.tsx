@@ -27,7 +27,7 @@ export default class Store{
         return this.apps;
     }
 
-    closeApp(appName : string){
-        this.apps = this.apps.filter(e => e.name !== appName);
+    closeApp(processId : string){
+        this.apps = this.apps.filter(e => e.process !== processId);
     }
 }
