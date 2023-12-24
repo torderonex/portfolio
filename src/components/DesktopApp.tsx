@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { App } from "../types/App";
 import { useContext } from "react";
 import { Context } from "..";
-import {v4} from "uuid";
+import { v4 } from "uuid";
 
 const Div = styled.div`
     width: 10vh;
@@ -27,8 +27,6 @@ interface props{
 
 function DesktopApp({app} : props){
     const {store} = useContext(Context);
-    
-    app.process = v4();
 
     function openHandler(){
         store.openApp(app);

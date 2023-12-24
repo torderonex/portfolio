@@ -6,3 +6,7 @@ export const Shadow = styled.div`
     border-right: 2px solid black;
     border-bottom: 2px solid black;
 `
+
+export const alterShadow = `
+    
+`

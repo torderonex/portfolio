@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import { baseColors } from '../../styles/consts';
 import { Shadow } from '../../styles/shadow';
-import { PropsWithChildren, useContext, useRef } from 'react';
+import { PropsWithChildren, useContext, useEffect, useRef } from 'react';
 import HelpButton from './HelpButton';
 import { App } from '../../types/App';
 import { Context } from '../..';
 import { useDragAndDrop } from '../../hooks/useDragAndDrop';
-const Div = styled(Shadow)<{$left : number, $top: number}>`
+import { observer } from 'mobx-react-lite';
+const Div = styled(Shadow)<{$left : number, $top: number, $zIndex : number}>`
     position: absolute;
     width:500px;
     height:500px;
@@ -18,6 +19,7 @@ const Div = styled(Shadow)<{$left : number, $top: number}>`
             `
                 left:${props.$left}px;
                 top:${props.$top}px;
+                z-index: ${props.$zIndex};
             `
         )
     }
@@ -64,10 +66,14 @@ function AppContainer(props: props){
     const {store} = useContext(Context);
     const programRef = useRef<HTMLDivElement | null>(null);
     const headerRef = useRef(null);
+    
+    useEffect(() => {
+        programRef.current?.addEventListener('mousedown', zIndexHandler)
+        return () => {programRef.current?.removeEventListener('mousedown', zIndexHandler)}
+    }, [])
 
     function fullscreenHandler() {
         const { current } = programRef;
-    
         if (current) {  
             current.style.width = '100%';
             current.style.height = '96vh';
@@ -91,12 +97,28 @@ function AppContainer(props: props){
             props.app.top =  parseInt(top);
         }
     }
+
+    function zIndexHandler(){
+        const apps = store.getApps();
+        if (programRef.current){
+            const max =  Math.max(...apps.map(e => e.zIndex)) + 1;
+            props.app.zIndex = max;
+            programRef.current.style.zIndex = max + ''
+        }
+    }
+
     useDragAndDrop(headerRef,programRef, dragHandler)
 
     const btnNames = ['File', 'Edit', 'Search', 'Help']
 
     return(
-        <Div {...props} ref={programRef} $left={props.app.left} $top={props.app.top}>
+        <Div 
+        {...props} 
+        ref={programRef}
+        $left={props.app.left}
+        $top={props.app.top}
+        $zIndex={props.app.zIndex}
+        >
             <Header ref={headerRef}>
                 <Ico src={props.app.ico} style={{height:"100%"}}/>
                 <span style={{marginLeft:'5px'}}>

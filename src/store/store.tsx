@@ -1,5 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { App } from "../types/App";
+import {v4} from "uuid";
 
 export default class Store{
     private isStartMenuOpen = false;
@@ -18,8 +19,12 @@ export default class Store{
     }
 
     openApp(app : App){
-        if (this.apps.includes(app))
-            return;
+        app.process = v4();
+        let zIndex = 0;
+        if(this.apps.length){
+            zIndex = Math.max(...this.apps.map(e => e.zIndex));
+        }
+        app.zIndex = zIndex;
         this.apps.push(app);
     }
 

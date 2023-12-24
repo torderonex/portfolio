@@ -14,11 +14,11 @@ export default createGlobalStyle`
     font-family: 'W95FA', monospace;
     image-rendering:pixelated;
   }
-
+  
   body{
     min-width:1440px;
     overflow:hidden;  
     height: 100%;
-
+    
   }
 `;
