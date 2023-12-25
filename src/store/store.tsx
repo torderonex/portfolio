@@ -10,6 +10,10 @@ export default class Store{
         makeAutoObservable(this);
     }
 
+    getMaxZIndex() : number{
+        return Math.max(...this.apps.map(e => e.zIndex)) ;
+    }
+
     setIsStartMenuOpen(bool : boolean){
         this.isStartMenuOpen = bool;
     }
@@ -22,7 +26,7 @@ export default class Store{
         app.process = v4();
         let zIndex = 0;
         if(this.apps.length){
-            zIndex = Math.max(...this.apps.map(e => e.zIndex)) + 1;
+            zIndex = this.getMaxZIndex() + 1;
         }
         app.zIndex = zIndex;
         this.apps.push(app);

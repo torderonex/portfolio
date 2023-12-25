@@ -75,9 +75,6 @@ function AppContainer(props: props){
 
     function minimizeHandler(){
         props.app.zIndex = -1;
-        if (programRef.current){
-            programRef.current.style.zIndex = '-1'
-        }
     }
 
     function fullscreenHandler() {
@@ -108,7 +105,7 @@ function AppContainer(props: props){
 
     function zIndexHandler(){
         const apps = store.getApps();
-        const max =  Math.max(...apps.map(e => e.zIndex)) + 1;
+        const max =  store.getMaxZIndex() + 1;
         props.app.zIndex = max;
     }
 

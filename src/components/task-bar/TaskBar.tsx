@@ -7,6 +7,7 @@ import StartBtn from "./StartBtn";
 import { Context } from "../..";
 import { observer } from "mobx-react-lite";
 import { Shadow } from "../../styles/shadow";
+import { App } from "../../types/App";
 
 const Footer = styled.footer`
     width: 100%;
@@ -31,14 +32,37 @@ const Wrapper = styled.div`
     display:flex;
 `
 
-const Program = styled(Shadow)`
-    text-align:center;
+const Program = styled(Shadow)<{$active : boolean}>`
     min-width:150px;
+    display:flex;
+    gap:5px;
+    text-align: center;
+    align-items: center;
     cursor: pointer;
+    ${
+        (props) => (
+            props.$active && `
+            border-top: 2px solid black;
+            border-left: 2px solid black;
+            border-bottom:2px solid white;
+            border-right:2px solid white;
+            `
+        )
+    }
+`
+
+const Ico = styled.img`
+    height:3vh;
+    margin-left:5px;
 `
 
 function TaskBar() {
     const {store} = useContext(Context);
+
+    function programClickHandle(a : App){
+        a.zIndex = store.getMaxZIndex() + 1;
+    }
+
     return (
         <Footer>
             <Wrapper>
@@ -47,7 +71,13 @@ function TaskBar() {
                 <Programs>
                     {
                         store.getApps().map(e => (
-                            <Program key={Math.random()}>{e.name}</Program>
+                            <Program 
+                             $active={(e.zIndex !== -1) && (e.zIndex === store.getMaxZIndex())}
+                             onClick={() => {programClickHandle(e)}}
+                             key={Math.random()}>
+                                <Ico src={e.ico}/>
+                                {e.name}
+                            </Program>
                         ))
                     }    
                 </Programs>
