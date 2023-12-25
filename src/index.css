@@ -1,9 +1,6 @@
-import { createGlobalStyle } from 'styled-components'
-
-export default createGlobalStyle`
-   @font-face {
+@font-face {
     font-family: 'W95FA';
-    src: local('W95FA'), url('/fonts/W95FA.otf') format('opentype');
+    src: local('W95FA'), url('../public/fonts/W95FA.otf') format('opentype');
     font-style: normal;
     font-weight: normal;
   }
@@ -21,4 +18,3 @@ export default createGlobalStyle`
     height: 100%;
     
   }
-`;

@@ -1,12 +1,11 @@
 import Desktop from "./components/Desktop";
 import TaskBar from "./components/task-bar/TaskBar";
-import GlobalStyles from "./styles/global"
+import './index.css'
 function App() {
   return (
     <div className="App">
       <Desktop/>
       <TaskBar/>
-      <GlobalStyles/>
     </div>
   );
 }

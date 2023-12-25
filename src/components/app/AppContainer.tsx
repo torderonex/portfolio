@@ -108,11 +108,8 @@ function AppContainer(props: props){
 
     function zIndexHandler(){
         const apps = store.getApps();
-        if (programRef.current){
-            const max =  Math.max(...apps.map(e => e.zIndex)) + 1;
-            props.app.zIndex = max;
-            programRef.current.style.zIndex = max + ''
-        }
+        const max =  Math.max(...apps.map(e => e.zIndex)) + 1;
+        props.app.zIndex = max;
     }
 
     useDragAndDrop(headerRef,programRef, dragHandler)
@@ -155,4 +152,4 @@ function AppContainer(props: props){
     );
 }
 
-export default AppContainer;
+export default observer(AppContainer);
