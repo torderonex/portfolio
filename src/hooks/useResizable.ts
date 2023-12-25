@@ -26,8 +26,8 @@ export const useResizableBox = (app : App): ResizableBoxState => {
   const handleMouseMove : any= (e: MouseEvent): void => {
     if (!resizing.current) return;
 
-    const newWidth = e.clientX;
-    const newHeight = e.clientY;
+    const newWidth =  e.clientX - app.left ;
+    const newHeight =  e.clientY - app.top ;
     const maxWidth = window.innerWidth - 10; 
     const maxHeight = window.innerHeight - 10;
 

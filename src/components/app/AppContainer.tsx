@@ -64,6 +64,15 @@ const Span = styled.span`
     text-transform:uppercase;
 `
 
+const Cursor = styled.div`
+    position:absolute;
+    width: 20px;
+    height:20px;
+    bottom:0;
+    right:0;
+    cursor:nwse-resize;
+`
+
 interface props extends PropsWithChildren{
     app : App;
 }
@@ -151,6 +160,7 @@ function AppContainer(props: props){
             {
                 props.children
             }
+            <Cursor/>
         </Div>
     );
 }
