@@ -72,6 +72,14 @@ function AppContainer(props: props){
         return () => {programRef.current?.removeEventListener('mousedown', zIndexHandler)}
     }, [])
 
+
+    function minimizeHandler(){
+        props.app.zIndex = -1;
+        if (programRef.current){
+            programRef.current.style.zIndex = '-1'
+        }
+    }
+
     function fullscreenHandler() {
         const { current } = programRef;
         if (current) {  
@@ -125,7 +133,7 @@ function AppContainer(props: props){
                     {props.app.name}
                 </span>
                 <HelpBtns>
-                    <HelpButton src="/img/first.png"/>
+                    <HelpButton onClick={minimizeHandler} src="/img/first.png"/>
                     <HelpButton onClick={fullscreenHandler} src="/img/second.png"/>
                     <HelpButton onClick={closeHandler} src="/img/third.png"/>
                 </HelpBtns>

@@ -22,7 +22,7 @@ export default class Store{
         app.process = v4();
         let zIndex = 0;
         if(this.apps.length){
-            zIndex = Math.max(...this.apps.map(e => e.zIndex));
+            zIndex = Math.max(...this.apps.map(e => e.zIndex)) + 1;
         }
         app.zIndex = zIndex;
         this.apps.push(app);

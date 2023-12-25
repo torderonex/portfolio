@@ -20,22 +20,29 @@ const Main = styled.main`
 `
 function Desktop(){
     const mock : App = {
-        name:'Text.txt',
+        name:'my projects.txt',
         ico:'/img/text.png',
         program : <TextDocument/>,
         zIndex : 0,
         process : null,
         left: 120,
         top: 120,
-
+    };
+    const mock2 : App = {
+        name:'about me.txt',
+        ico:'/img/text.png',
+        program : <TextDocument/>,
+        zIndex : 0,
+        process : null,
+        left: 120,
+        top: 120,
     };
     const {store} = useContext(Context);
     
     return(
         <Main>
             <DesktopApp app={mock}/>
-            <DesktopApp app={mock}/>
-            <DesktopApp app={mock}/>
+            <DesktopApp app={mock2}/>
             {
                 store.getApps().map(e => (
                     <AppContainer key={Math.random()} app={e}>
