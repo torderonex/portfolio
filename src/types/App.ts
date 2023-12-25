@@ -8,4 +8,10 @@ export interface App{
     zIndex : number;
     left: number;
     top : number;
+    size : windowSize;
+}
+
+export interface windowSize{
+    width : number;
+    height : number
 }

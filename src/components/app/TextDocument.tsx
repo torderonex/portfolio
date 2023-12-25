@@ -10,7 +10,7 @@ const TextArea = styled.textarea`
 
 function TextDocument() {
   return (
-  <TextArea>
+  <TextArea style={{fontFamily:'monospace'}}>
   </TextArea>
   )
 }

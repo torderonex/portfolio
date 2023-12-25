@@ -8,6 +8,7 @@ import { observer } from "mobx-react-lite";
 import TextDocument from "./app/TextDocument";
 import { App } from "../types/App";
 
+
 const Main = styled.main`
     background-color: ${baseColors.wallpaperColor};
     height: 96vh;
@@ -27,6 +28,11 @@ function Desktop(){
         process : null,
         left: 120,
         top: 120,
+        size : {
+            width : 384,
+            height : 384,
+
+        }
     };
     const mock2 : App = {
         name:'about me.txt',
@@ -36,9 +42,13 @@ function Desktop(){
         process : null,
         left: 120,
         top: 120,
+        size : {
+            width : 384,
+            height : 384,
+
+        }
     };
     const {store} = useContext(Context);
-    
     return(
         <Main>
             <DesktopApp app={mock}/>

@@ -6,11 +6,17 @@ import HelpButton from './HelpButton';
 import { App } from '../../types/App';
 import { Context } from '../..';
 import { useDragAndDrop } from '../../hooks/useDragAndDrop';
+import {useResizableBox} from '../../hooks/useResizable'
 import { observer } from 'mobx-react-lite';
-const Div = styled(Shadow)<{$left : number, $top: number, $zIndex : number}>`
+
+const Div = styled(Shadow)<{$left : number,
+                            $top: number,
+                            $zIndex : number,
+                            $width : number,
+                            $height: number}> `
     position: absolute;
-    width:500px;
-    height:500px;
+    width:${props => `${props.$width}px`};
+    height:${props => `${props.$height}px`};
     padding:2px;
     background-color: ${baseColors.taskBarColor};   
     user-select:none;
@@ -72,19 +78,15 @@ function AppContainer(props: props){
         return () => {programRef.current?.removeEventListener('mousedown', zIndexHandler)}
     }, [])
 
-
     function minimizeHandler(){
         props.app.zIndex = -1;
     }
 
     function fullscreenHandler() {
-        const { current } = programRef;
-        if (current) {  
-            current.style.width = '100%';
-            current.style.height = '96vh';
-            current.style.top = '0';
-            current.style.left = '0';
-        }
+        props.app.top = 0;
+        props.app.left = 0;
+        props.app.size.width = window.innerWidth-2;
+        props.app.size.height = Math.floor(window.innerHeight * 0.95);
     }
 
     function closeHandler(){
@@ -109,6 +111,7 @@ function AppContainer(props: props){
         props.app.zIndex = max;
     }
 
+    const {  onMouseDown } = useResizableBox(props.app);
     useDragAndDrop(headerRef,programRef, dragHandler)
 
     const btnNames = ['File', 'Edit', 'Search', 'Help']
@@ -120,6 +123,9 @@ function AppContainer(props: props){
         $left={props.app.left}
         $top={props.app.top}
         $zIndex={props.app.zIndex}
+        $width={props.app.size.width}
+        $height={props.app.size.height}
+        onMouseDown={onMouseDown}
         >
             <Header ref={headerRef}>
                 <Ico src={props.app.ico} style={{height:"100%"}}/>
