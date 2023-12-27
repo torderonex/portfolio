@@ -8,9 +8,14 @@ const TextArea = styled.textarea`
   font-size:2.5vh;
 `
 
-function TextDocument() {
+interface props {
+  text : string
+}
+
+function TextDocument({text} : props) {
   return (
-  <TextArea style={{fontFamily:'monospace'}}>
+  <TextArea style={{fontFamily:'Consolas, monospace'}}>
+    {text}
   </TextArea>
   )
 }

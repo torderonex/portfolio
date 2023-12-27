@@ -8,6 +8,8 @@ const Div = styled.div`
     width: calc(100% - 4px);
     height: calc(100% - 50px);
     background-color:white;
+    gap:20px;
+    flex-wrap:wrap;
     ${alterShadow}
 `
 interface props{
