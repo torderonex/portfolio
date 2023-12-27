@@ -27,7 +27,7 @@ function Desktop(){
         <Main>
             {
                 desktopApps.map(e => (
-                    <DesktopApp app={e}/>
+                    <DesktopApp key={Math.random()} app={e}/>
                 ))
             }
             {

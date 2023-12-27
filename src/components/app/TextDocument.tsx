@@ -14,10 +14,8 @@ interface props {
 
 function TextDocument({text} : props) {
   return (
-  <TextArea style={{fontFamily:'Consolas, monospace'}}>
-    {text}
-  </TextArea>
-  )
+  <TextArea style={{fontFamily:'Consolas, monospace'}} defaultValue={text}/ >
+  );
 }
 
 export default TextDocument;

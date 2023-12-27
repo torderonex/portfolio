@@ -21,7 +21,7 @@ export default function Directory({apps} : props) {
   return (
     <Div>
         {apps.map(e => (
-            <DesktopApp app={e}/>
+            <DesktopApp key={Math.random()} app={e}/>
         ))}
     </Div>
     );
