@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import { baseColors } from '../../styles/consts';
 import { Shadow } from '../../styles/shadow';
 import { PropsWithChildren, useContext, useEffect, useRef } from 'react';
-import HelpButton from './HelpButton';
 import { App } from '../../types/App';
 import { Context } from '../..';
 import { useDragAndDrop } from '../../hooks/useDragAndDrop';
 import {useResizableBox} from '../../hooks/useResizable'
 import { observer } from 'mobx-react-lite';
+import HelpButtons from './HelpButtons';
 
 const Div = styled(Shadow)<{$left : number,
                             $top: number,
@@ -23,8 +23,8 @@ const Div = styled(Shadow)<{$left : number,
     ${
         props => (
             `
-                left:${props.$left}px;
-                top:${props.$top}px;
+                left:${props.$left}px !important;
+                top:${props.$top}px !important;
                 z-index: ${props.$zIndex};
             `
         )
@@ -51,10 +51,7 @@ const HelpPanel = styled.div`
     margin-bottom:3px;
 `
 
-const HelpBtns = styled.div`
-    display:flex;
-    gap:2px;
-`
+
 const Ico = styled.img`
        
 `;
@@ -82,27 +79,6 @@ function AppContainer(props: props){
     const programRef = useRef<HTMLDivElement | null>(null);
     const headerRef = useRef(null);
     
-    useEffect(() => {
-        programRef.current?.addEventListener('mousedown', zIndexHandler)
-        return () => {programRef.current?.removeEventListener('mousedown', zIndexHandler)}
-    }, [])
-
-    function minimizeHandler(){
-        props.app.zIndex = -1;
-    }
-
-    function fullscreenHandler() {
-        props.app.top = 0;
-        props.app.left = 0;
-        props.app.size.width = window.innerWidth-2;
-        props.app.size.height = Math.floor(window.innerHeight * 0.95);
-    }
-
-    function closeHandler(){
-        if(props.app.process)
-            store.closeApp(props.app.process);
-    }
-
     function dragHandler(){
         const left = programRef.current?.style.left.replace('px','');
         if (left){
@@ -120,7 +96,13 @@ function AppContainer(props: props){
         props.app.zIndex = max;
     }
 
-    const {  onMouseDown } = useResizableBox(props.app);
+    const {  onMouseDown  } = useResizableBox(props.app);
+    
+    function onMouseDownHandle(e : React.MouseEvent<Element,MouseEvent>){
+        onMouseDown(e);
+        zIndexHandler();
+    }
+    
     useDragAndDrop(headerRef,programRef, dragHandler)
 
     const btnNames = ['File', 'Edit', 'Search', 'Help']
@@ -134,18 +116,14 @@ function AppContainer(props: props){
         $zIndex={props.app.zIndex}
         $width={props.app.size.width}
         $height={props.app.size.height}
-        onMouseDown={onMouseDown}
+        onMouseDown={onMouseDownHandle}
         >
             <Header ref={headerRef}>
                 <Ico src={props.app.ico} style={{height:"100%"}}/>
                 <span style={{marginLeft:'5px'}}>
                     {props.app.name}
                 </span>
-                <HelpBtns>
-                    <HelpButton onClick={minimizeHandler} src="/img/first.png"/>
-                    <HelpButton onClick={fullscreenHandler} src="/img/second.png"/>
-                    <HelpButton onClick={closeHandler} src="/img/third.png"/>
-                </HelpBtns>
+                <HelpButtons app={props.app}/>
             </Header>
             <HelpPanel>
                 {btnNames.map(e => (
