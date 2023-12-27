@@ -11,6 +11,7 @@ const Div = styled.div`
     gap:20px;
     flex-wrap:wrap;
     ${alterShadow}
+    overflow: hidden;
 `
 interface props{
     apps : App[]
