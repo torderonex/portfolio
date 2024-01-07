@@ -28,7 +28,7 @@ const about : App = createTextDocument("About me.txt", `
     ------------------------
     Contact me:
 
-    telegram: @toderone
+    telegram: @torderone
     discord : torder1x
     github : torderonex
     ------------------------
