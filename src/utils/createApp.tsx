@@ -9,10 +9,10 @@ export function createTextDocument(name : string, text : string) : App{
         program : <TextDocument text={text}/>,
         zIndex : 0,
         process : null,
-        left: 120,
+        left: window.innerWidth / 2 - 300, 
         top: 120,
         size : {
-            width : 550,
+            width : 600,
             height : 440,
     
         }

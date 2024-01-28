@@ -23,7 +23,7 @@ const teamspace = createTextDocument("teamspace.txt",`
      _                                       
     | |_ ___ __ _ _ __  ____ __  __ _ __ ___ 
     |  _/ -_) _\` | '  \\(_-< '_ \\/ _\` / _/ -_)
-    \\__\\___\\__,_|_|_|_/__/ .__/\\__,_\\__\\___|
+     \\__\\___\\__,_|_|_|_/__/ .__/\\__,_\\__\\___|
                          |_|                
 
     A huge project that I led with my team during a hackathon from my university, in a week we created

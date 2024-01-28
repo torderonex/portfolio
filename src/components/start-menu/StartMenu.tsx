@@ -10,6 +10,7 @@ const Div = styled(Shadow)`
     background-color: ${baseColors.taskBarColor};
     height: 45vh;
     width:20vw;
+    min-width:350px;
     border-right:2px solid black;
     border-bottom:2px solid black;
     border-top: 2px solid white;
@@ -19,7 +20,7 @@ const Div = styled(Shadow)`
 
 const LogoDiv = styled.div`
     height: 100%;
-    width: 3vw;
+    width: 15%;
     background-color: ${baseColors.darkGray};
     writing-mode: vertical-lr; 
     text-orientation: unset;
@@ -36,7 +37,7 @@ const Span = styled.span`
 `
 
 const BtnsDiv = styled.div`
-    width:18vw;
+    width:calc(100% - 15%);
     height:100%;
     display:flex;
     flex-direction:column;
@@ -57,8 +58,8 @@ function StartMenu() {
         {name : 'Documents', icon : 'img/documents.png'},
         {name : 'Settings', icon : 'img/settings.png'},
         {name : 'Help', icon : 'img/help.png'},
-        {name : 'Help', icon : 'img/help.png'},
-        {name : 'Help', icon : 'img/help.png'},
+        {name : 'Find', icon : 'img/find.png'},
+        {name : 'Run', icon : 'img/run.png'},
     ]
 
     return (

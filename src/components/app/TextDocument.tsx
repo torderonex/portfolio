@@ -5,7 +5,7 @@ const TextArea = styled.textarea`
   width: calc(100% - 4px);
   height: calc(100% - 50px);
   resize:none;
-  font-size:2.5vh;
+  font-size:20px;
 `
 
 interface props {
