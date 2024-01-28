@@ -2,6 +2,9 @@ import styled from "styled-components";
 import { baseColors } from "../../styles/consts";
 import StartMenuBtn from "./StartMenuBtn";
 import { Shadow } from "../../styles/shadow";
+import { useContext } from "react";
+import { Context } from "../..";
+import { help } from "../../apps/StartMenuApps";
 const Div = styled(Shadow)`
     position: absolute;
     z-index: 123;
@@ -53,11 +56,12 @@ const Line = styled.div`
 `
 
 function StartMenu() {
+    const {store} = useContext(Context);
     const btn = [
         {name : 'Programs', icon : 'img/programs.png'},
         {name : 'Documents', icon : 'img/documents.png'},
         {name : 'Settings', icon : 'img/settings.png'},
-        {name : 'Help', icon : 'img/help.png'},
+        {name : 'Help', icon : 'img/help.png', onClick : () => {store.openApp(help)} },
         {name : 'Find', icon : 'img/find.png'},
         {name : 'Run', icon : 'img/run.png'},
     ]
@@ -68,11 +72,11 @@ function StartMenu() {
         <BtnsDiv>
             {
                 btn.map((item, index) => (
-                    <StartMenuBtn name={item.name} icon={item.icon} isDropdown=""/>
+                    <StartMenuBtn name={item.name} icon={item.icon} isDropdown="" onClick={item.onClick || (() => {})}/>
                 ))
             }
             <Line/>
-            <StartMenuBtn onClick={() => window.close()} name={"Shutdown"} icon={"img/shutdown.png"} isDropdown=""/>
+            <StartMenuBtn onClick={() => window.close} name={"Shutdown"} icon={"img/shutdown.png"} isDropdown=""/>
         </BtnsDiv>
     </Div>
     );
