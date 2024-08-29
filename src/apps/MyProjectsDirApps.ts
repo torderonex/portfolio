@@ -108,7 +108,7 @@ const other = createTextDocument("other.txt",`
         Github: https://github.com/torderonex/cryptorate
      
     Crud generator
-        A self-written code generator for generating KRUD queries to postgres for Go.
+        A self-written code generator for generating CRUD queries to postgres for Go.
         Stack: Go
         Github: https://github.com/torderonex/crud_generator
         
