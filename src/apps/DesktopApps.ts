@@ -16,9 +16,10 @@ const about : App = createTextDocument("About me.txt", `
 
     With 5 years of experience in programming, I have honed my skills in algorithms and data structures, backend and frontend
     technologies, databases, software architecture and cryptography.
-    At the moment, my main stack includes technologies such as TypeScript, React, MobX, Golang, NodeJS, Express.JS, PostgreSQL.
-    Also I had experience with the following technologies: Vue3, Python, Fast-API, C#, ASP.NET, C++, MongoDB. 
-    Lately I have also been interested in devops technologies and using Docker, k8s and other CI/CD stuff.
+    Currently, my primary tech stack comprises a robust set of technologies including TypeScript, React, MobX, Golang and PostgreSQL.
+    These tools are the backbone of my development work, enabling me to deliver high-quality, scalable solutions efficiently.
+    In addition to my core stack, I bring hands-on experience with a diverse range of technologies such as Vue3, Python, NodeJS, C#, ASP.NET, C++, and MongoDB.
+    Recently, I’ve been expanding my expertise into the DevOps domain, actively working with Docker, Kubernetes, and other CI/CD tools.
     ------------------------
     Notable Achievements:
 
