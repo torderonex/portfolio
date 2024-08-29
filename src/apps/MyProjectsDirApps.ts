@@ -66,6 +66,28 @@ const onlineStore = createTextDocument("online-store.txt",`
     Backend : NodeJS, Express.JS, Sequelize, PostgreSQL, Rest-api
   GitHub repository: https://github.com/torderonex/online-store
 `)
+
+const geekHubCompiler = createTextDocument("web\ncompiler.txt",`
+  
+             _                       _ _         
+ __ __ _____| |__  __ ___ _ __  _ __(_) |___ _ _ 
+ \\ V  V / -_) '_ \\/ _/ _ \\ '  \\| '_ \\ | / -_) '_|
+  \\_/\\_/\\___|_.__/\\__\\___/_|_|_| .__/_|_\\___|_|  
+                               |_|               
+  
+  Fullstack project web IDE. It implements such features as: isolated code execution in different languages
+  in the built-in web code editor, AI chat assistant for the programmer, AI smart code review,
+  Tasks like leetcode.
+  Also, the user can create projects with several files and invite other developers to these projects.
+  The project was carried out in a team of 3 programmers, the backend was entirely on me.
+  
+  Technology stack:
+    Frontend : TypeScript, React, Redux Toolkit.
+    Backend : Golang, Gin, PostgreSQL, Rest-api, Docker, docker-compose, DnD
+    
+  GitHub repository: https://github.com/torderonex/geekhub
+`)
+
 const other = createTextDocument("other.txt",`
     In addition to large web applications, I also developed various CLI applications and telegram bots.
 
@@ -84,6 +106,12 @@ const other = createTextDocument("other.txt",`
         Based on a self-written scheduler
         Stack: Go, tgbotapi
         Github: https://github.com/torderonex/cryptorate
+     
+    Crud generator
+        A self-written code generator for generating KRUD queries to postgres for Go.
+        Stack: Go
+        Github: https://github.com/torderonex/crud_generator
+        
         `)
 
-export const myProjs = [webchess, teamspace, gochain,onlineStore,other];
+export const myProjs = [webchess, teamspace, gochain,onlineStore, geekHubCompiler, other];

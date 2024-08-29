@@ -12,18 +12,18 @@ const about : App = createTextDocument("About me.txt", `
 
     I am a web developer from Moscow, Russia.
     ------------------------
-    Proffessional background:
+    Professional background:
 
-    With 4 years of experience in programming, I have honed my skills in algorithms and data structures, backend and frontend
+    With 5 years of experience in programming, I have honed my skills in algorithms and data structures, backend and frontend
     technologies, databases, software architecture and cryptography.
-    At the moment, my stack includes technologies such as TypeScript, React, MobX, Golang, NodeJS, Express.JS, PostgreSQL.
+    At the moment, my main stack includes technologies such as TypeScript, React, MobX, Golang, NodeJS, Express.JS, PostgreSQL.
     Also I had experience with the following technologies: Vue3, Python, Fast-API, C#, ASP.NET, C++, MongoDB. 
-    Lately I have also been studying devops technologies and using Docker, Github Actions, Linux.
+    Lately I have also been interested in devops technologies and using Docker, k8s and other CI/CD stuff.
     ------------------------
     Notable Achievements:
 
-    During my studies, I developed more than 10 pet projects, which include an agile system, a chess web platform,
-    an online store, a cryptocurrency with its own blockchain and many others. I also participated and won many hackathons,
+    During my studies, I developed more than 10 pet projects, which include an agile system task manager, a chess web platform,
+    an web IDE with build-in leetcode clone, a cryptocurrency with its own blockchain and many others. I also participated and won many hackathons,
     which gave me enormous experience and knowledge.
     ------------------------
     Contact me:
